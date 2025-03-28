@@ -84,6 +84,7 @@ class FactoryManager:
             try:
                 self.container = self.client.containers.get(self.container_name)
                 print(f"Attached to existing container '{self.container_name}'.")
+                print("Access webview at http://localhost:3000/vnc/index.html?autoconnect=1&rtrue=false&clipboard_up=true&clipboard_down=true&clipboard_seamless=true&show_control_bar=true&view_only=true")
             except NotFound:
                 print(f"Container '{self.container_name}' not found. Creating a new one...")
                 self.container = self.client.containers.run(
@@ -99,6 +100,7 @@ class FactoryManager:
                     restart_policy=self.restart_policy
                 )
                 print(f"Container '{self.container_name}' started with ID: {self.container.id}")
+                print("Access webview at http://localhost:3000/vnc/index.html?autoconnect=1&rtrue=false&clipboard_up=true&clipboard_down=true&clipboard_seamless=true&show_control_bar=true&view_only=true")
 
             self.container.reload()
             if self.container.status != "running":
